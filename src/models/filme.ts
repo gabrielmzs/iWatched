@@ -8,5 +8,7 @@ export class Filme {
     posterUrl: string;
     videoUrl: string;
     anoLancamento: string;
+    diretor: string;
+    elenco: string[];
 }
 

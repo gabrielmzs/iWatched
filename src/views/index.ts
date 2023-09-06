@@ -73,32 +73,7 @@ class TelaInicio {
     }
 
 
-    // GerarFilme(filme: Filme) {
 
-    //     const bloco = document.createElement('div');
-
-    //     const imagem = document.createElement("img");
-    //     imagem.src = filme.posterUrl;
-
-
-    //     const titulo = document.createElement('a');
-
-    //     titulo.textContent = filme.nomePt;
-
-
-    //     const data = document.createElement('p');
-
-    //     const partesData = filme.anoLancamento.split("-");
-    //     data.textContent = partesData[0];
-
-
-
-    //     bloco.appendChild(titulo);
-    //     bloco.appendChild(data);
-    //     bloco.appendChild(imagem);
-
-    //     return bloco
-    // }
 
 
 }

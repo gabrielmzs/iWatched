@@ -18,8 +18,20 @@ export class FilmeService {
 
         const nomesDosGeneros = obj.genres.map((genero: any) => genero.name);
 
+        const diretor = await this.pesquisarDiretor(obj.id);
+        const elenco = await this.pesquisarElenco(obj.id);
+
         const link = await this.pequisarVideo(obj.id);
-        const key = link.key as string;
+        console.log(link);
+        let key = "";
+        if (link == undefined) {
+            key = "https://www.youtube.com";
+        }
+        else {
+            key = link.key as string;
+
+        }
+
 
         return {
 
@@ -31,9 +43,45 @@ export class FilmeService {
             posterUrl: "https://image.tmdb.org/t/p/original/" + obj.poster_path,
             videoUrl: "https://www.youtube.com/embed/" + key,
             anoLancamento: obj.release_date,
+            diretor: diretor,
+            elenco: elenco,
 
         }
     }
+    async pesquisarDiretor(id: any): Promise<any> {
+        const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=pt-BR`;
+
+        const response = await fetch(url, this.obterHeaderAutorizacao());
+        const data = await response.json();
+
+        let diretor = null;
+        for (const crewMember of data.crew) {
+            if (crewMember.department === "Directing") {
+                diretor = crewMember.name;
+                break;
+            }
+        }
+
+        return diretor as string;
+    }
+
+    async pesquisarElenco(id: any): Promise<any[]> {
+
+        const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=pt-BR`;
+
+        const response = await fetch(url, this.obterHeaderAutorizacao());
+        const data = await response.json();
+
+        if (data.cast && data.cast.length >= 10) {
+            return data.cast.slice(0, 10).map((membro: any) => membro.name);
+        } else {
+            console.log("Não há informações suficientes no elenco.");
+            return [];
+        }
+    }
+
+
+
 
     async mapearLista(obj: any): Promise<Filme> {
         // console.log(obj)
@@ -48,6 +96,8 @@ export class FilmeService {
             posterUrl: "https://image.tmdb.org/t/p/original/" + obj.poster_path,
             videoUrl: "https://www.youtube.com/embed/",
             anoLancamento: obj.release_date,
+            diretor: "",
+            elenco: []
 
         }
     }
@@ -60,7 +110,7 @@ export class FilmeService {
         return fetch(url, this.obterHeaderAutorizacao())
             .then(res => res.json())
             .then(data => {
-                return data.results[0] as string;
+                return data.results[data.results.length - 1] as string;
             });
 
     }

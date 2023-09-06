@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iWatched</title>
-    <script src="https://www.youtube.com/iframe_api"></script>
     <link rel="shortcut icon" href="/assets/favicon.svg" type="image/x-icon">
 </head>
 
@@ -44,13 +43,29 @@
             </div>
         </div>
 
-        <div class="d-flex m-3 gap-2" id="divGeneros">
-            <span class="badge rounded-pill fs-4 px-4 py-2 bg-warning text-dark " id="primeiroGenero"></span>
-
+        <div class="d-flex m-3 gap-2 mx-lg-0" id="divGeneros">
+            <span class="badge rounded-pill fs-7 px-2 py-2 bg-warning text-dark " id="primeiroGenero"></span>
         </div>
 
-        <div class="row m-2">
-            <h5 class="f-5 text-light gap-3" id="sinopse"></h5>
+        <div class="row border-top">
+            <h5 class="f-5 text-light align-items-justify " id="sinopse"></h5>
+        </div>
+        <div class="row border-top">
+            <div class="col-lg-1 align-items-center">
+                <h5 class="f-5 text-light fw-bolder  ">Direção:</h5>
+            </div>
+            <div class="col-lg-3 d-flex">
+                <span class="badge rounded-pill fs-4 px-5 py-2 bg-black text-light " id="direcao"></span>
+            </div>
+        </div>
+
+        <div class="row border-top d-flex" id="divElenco">
+            <div class="col-lg-1">
+                <h5 class="f-5 text-light fw-bolder ">Elenco:</h5>
+            </div>
+            <div class="col-lg-1 d-flex" id="nomesElenco">
+
+            </div>
         </div>
 
     </div>
