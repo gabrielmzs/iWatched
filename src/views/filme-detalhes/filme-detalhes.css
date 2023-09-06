@@ -1,0 +1,22 @@
+@import url("bootstrap/dist/css/bootstrap.min.css");
+@import url("bootstrap-icons/font/bootstrap-icons.min.css");
+
+body {
+
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(2, 82, 128, 1) 100%);
+}
+
+.navbar {
+    background: black;
+}
+
+
+p {
+    font-size: x-small;
+}
+
+h1 {
+    font-size: 70px;
+    color: greenyellow;
+}
